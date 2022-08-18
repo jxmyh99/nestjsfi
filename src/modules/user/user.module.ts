@@ -1,14 +1,14 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common'
-import { UserService } from './user.service'
-import { UserController } from './user.controller'
-import { HelloMiddleware } from 'src/middlewares/hello.middleware'
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { UserService } from './user.service';
+import { UserController } from './user.controller';
+import { HashPasswordMiddleware } from 'src/middllewares/hash-password.middleware';
 
 @Module({
   providers: [UserService],
-  controllers: [UserController]
+  controllers: [UserController],
 })
 export class UserModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(HelloMiddleware).forRoutes('user')
+    consumer.apply(HashPasswordMiddleware).forRoutes('user');
   }
 }
