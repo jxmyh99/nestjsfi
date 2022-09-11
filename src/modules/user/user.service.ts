@@ -7,6 +7,13 @@ import { User } from 'src/interface/user.interface';
 const logger = new Logger('user.service');
 @Injectable()
 export class UserService {
+  /**
+   *
+   * 私有变量 返回信息
+   * @private
+   * @type {IResponse}
+   * @memberof UserService
+   */
   private response: IResponse;
   constructor(
     @InjectModel('USER_MODEL') private readonly userModel: Model<User>,
